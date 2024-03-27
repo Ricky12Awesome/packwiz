@@ -345,7 +345,11 @@ func getSide(mod *modrinthApi.Project) string {
 	server := shouldDownloadOnSide(*mod.ServerSide)
 	client := shouldDownloadOnSide(*mod.ClientSide)
 
+	var overrideSideFlagDefault = viper.GetBool("override-side-default")
+
 	if server && client {
+		return core.UniversalSide
+	} else if (overrideSideFlagDefault || overrideSideFlag) && server {
 		return core.UniversalSide
 	} else if server {
 		return core.ServerSide

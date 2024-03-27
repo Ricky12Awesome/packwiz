@@ -458,6 +458,7 @@ func createFileMeta(project *modrinthApi.Project, version *modrinthApi.Version, 
 var projectIDFlag string
 var versionIDFlag string
 var versionFilenameFlag string
+var overrideSideFlag bool
 
 func init() {
 	modrinthCmd.AddCommand(installCmd)
@@ -465,4 +466,5 @@ func init() {
 	installCmd.Flags().StringVar(&projectIDFlag, "project-id", "", "The Modrinth project ID to use")
 	installCmd.Flags().StringVar(&versionIDFlag, "version-id", "", "The Modrinth version ID to use")
 	installCmd.Flags().StringVar(&versionFilenameFlag, "version-filename", "", "The Modrinth version filename to use")
+	installCmd.Flags().BoolVar(&overrideSideFlag, "override-side", false, "Override side server to both")
 }
